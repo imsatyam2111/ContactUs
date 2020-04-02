@@ -12,18 +12,19 @@
 
 body{
     
-    background: url(photo-1473773508845-188df298d2d1.jfif);
+    background: url(9d4d07ca7d591bb3cd3d9f4df2624bbf.jpg);
     background-repeat: no-repeat;
     background-size: cover;
 }
 main{
     position:absolute;
     top: 2vh;
-    left: 34.5vw;
+    left: 34vw;
     width: 32vw;
-    height: 96vh;
+    min-height: 96vh;
     padding: 18px;
     padding-bottom: 25px;
+    margin-bottom: 2vh;
     box-sizing: border-box;
     border-radius: 15px;
     background: -webkit-linear-gradient(60deg,#c31432 30%,#240b36 90%);
@@ -31,6 +32,7 @@ main{
 }
 
 h1{
+    position: relative;
     text-align: center;
     color: #79c000;
     font-size: 48px;
@@ -38,6 +40,11 @@ h1{
     letter-spacing: 8px;
     word-spacing: 11px;
     padding: 10px;
+
+    /* this makes the heading Slide In from the top of webpage */
+    animation-name: slideInFromTop;
+    animation-duration: .7s;
+    animation-timing-function: ease-in-out;
 }
 
 
@@ -58,6 +65,7 @@ label{
 }
 
 .input_field{
+    position: relative;
     background: transparent;
     color: white;
     width: 100%;
@@ -70,7 +78,7 @@ label{
 
 
 /* Creating floating Label */
-
+/*label will change their positon when input is focused */
 .input_field:focus ~ label,
 .input_field:valid ~ label {
     top: -10px;
@@ -89,7 +97,6 @@ label{
     left: 3.4%;
     width: 0;
     background-color:#eee;
-   
     transition:  width 0.3s ;
 }
 
@@ -100,6 +107,7 @@ label{
 }
 
 
+/* Border will progress as the input is focused */
 .input_field:focus ~ .border,
 .input_field:valid ~ .border {
     width: 93%;
@@ -108,15 +116,31 @@ label{
 }
 
 
+/* Inputs and label present at odd positon will slide in from the left of the webpage */
+.form_elements:nth-child(odd){
+    animation-name: slideInFromLeft;
+    animation-duration: .8s;
+}
+
+
+/* Inputs and label present at odd positon will slide in from the left of the webpage */
+.form_elements:nth-child(even){
+    animation-name: slideInFromRight;
+    animation-duration: .8s;
+}
+
+
 /* Button Styling */
 
 button{
-    position: absolute;
-    left: 32px;
-    display: flex;
+    position: relative;
+    left: 10px;
+ 
+    display: flex;      /* Using display flex to align button text and icon properly */
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
+
     color: #fff;
     font-size: 16px;
     font-weight: 100;
@@ -129,17 +153,38 @@ button{
     border: none;
     background: #7ac000de;
     border-radius: 4px;
+
+    animation-name: fadeIn;
+    animation-duration: 2.2s;
 }
 
 button:hover{
     background: #79c000c5;
 }
 
+/* Using keyframes to animate the form elements */
+@keyframes slideInFromTop {
+    from{top:-20%}
+    to{top:0%}
+}
+@keyframes slideInFromLeft {
+    from{opacity: 0; left: -100%;}
+    to{opacity: 1; left: 0;}
+}
+@keyframes slideInFromRight{
+    from{opacity: 0; right: -100%;}
+    to{opacity: 1; right:0;}
+}
+@keyframes fadeIn {
+    from{opacity: 0;}
+    to{opacity: 1;}
+}
 
 
 
-/* Responsive Design starts here */
-
+/**********************************
+   Responsive Design starts here 
+**********************************/
 
 
 /* for small screen mobiles */
@@ -152,9 +197,12 @@ button:hover{
         background: #aaa;
     }
     main{
+        top: 2vh;
         width: 98%;
+        min-height: 95vh;
+        margin-bottom: 2.5vh;
         left: 1%;
-        top: 1%;
+        
         
     }
     h1{
@@ -166,7 +214,7 @@ button:hover{
         padding: 5px;
     }
     .input_field{
-        margin-bottom: 22px;
+        margin-bottom: 40px !important;
         padding-left: 5px;
     }
     .input_field:focus ~ label,
@@ -174,6 +222,9 @@ button:hover{
         font-size: 14px;
         letter-spacing: 1.5px;
 
+    }
+    textarea{
+        margin-bottom: 50px !important;
     }
 
     label{
@@ -186,8 +237,9 @@ button:hover{
     }
 
     button{
-        margin-top: -5px;
-        left: 20px;
+        position: relative;
+        margin-bottom: 20px;
+        left: 8px;
         width: 150px;
         padding-left: 12px;
         padding: 12px;
@@ -209,9 +261,11 @@ button:hover{
         background: #aaa;
     }
     main{
+        top: 4vh;
         width: 90%;
+        min-height: 95vh;
+        margin-bottom: 1vh;
         left: 5%;
-        top: 2%;
         padding-bottom: 15px;
         
     }
@@ -245,8 +299,9 @@ button:hover{
     }
 
     button{
-        margin-top: -10px;
-        left: 30px;
+        position: relative;
+        left: 10px;
+        margin-bottom: 20px;
         width: 160px;
         padding-left: 8px;
         padding: 15px;
@@ -263,13 +318,15 @@ button:hover{
     
 
     body{
-        background: url(photo-1473773508845-188df298d2d1.jfif);
-        background-repeat: no-repeat;
-        background-size: 1150px;
+        background: url(9d4d07ca7d591bb3cd3d9f4df2624bbf.jpg);
+       /* background-size: 1150px;*/
         
     }
     main{
+        top: 2vh;
         width: 50%;
+        min-height: 96vh;
+        margin-bottom: 2vh;
         left: 25%;
         top: 1%;
         padding-bottom: 10px;
@@ -321,13 +378,15 @@ button:hover{
 @media (min-width: 770px) and (max-width:1135px) {
 
     body{
-        background: url(photo-1473773508845-188df298d2d1.jfif);
-        background-repeat: no-repeat;
-        background-size: 1150px !important;    
+        background: url(9d4d07ca7d591bb3cd3d9f4df2624bbf.jpg);
+       /* background-size: 1150px !important;*/    
     }
 
     main{
+        top: 2vh;
         width: 40%;
+        min-height: 96vh;
+        margin-bottom: 2vh;
         left: 30%;
         top: 2%;
         font-size: 28px;
